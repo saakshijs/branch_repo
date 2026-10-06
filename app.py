@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -10,6 +10,6 @@ def home():
         food = request.form["food"]
         message = "Your " + food + " has been ordered! 🍕"
 
-    return render_template("index.html", message=message)
+    return render_template("frontend.html", message=message)
 
 app.run(debug=True)
